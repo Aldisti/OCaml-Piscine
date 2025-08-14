@@ -4,6 +4,9 @@ let ft_print_alphabet unit : unit =
     print_char (char_of_int c)
   done;
   print_char '\n'
-  ;;
 
-ft_print_alphabet ();;
+(* TEST SUITE *)
+
+let main unit = ft_print_alphabet ()
+
+let () = main ()

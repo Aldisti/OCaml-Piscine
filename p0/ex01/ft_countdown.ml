@@ -4,8 +4,16 @@ let rec ft_countdown (n: int) : unit =
         print_int n;
         print_char '\n';
         ft_countdown (n - 1)
-    );;
+    )
 
-ft_countdown (-42);;
-ft_countdown 0;;
-ft_countdown 5;;
+(* TEST SUITE *)
+
+let main unit =
+    print_string "-42:\n";
+    ft_countdown (-42);
+    print_string "0:\n";
+    ft_countdown 0;
+    print_string "5:\n";
+    ft_countdown 5
+
+let () = main ()

@@ -6,7 +6,7 @@ let ft_is_palindrome (s: string) : bool =
     res := !res && (String.get s i = String.get s (len - i))
   done;
   !res
-;;
+
 
 (* TEST SUITE *)
 
@@ -16,9 +16,11 @@ let test s : unit =
     print_string " => true\n"
   else
     print_string " => false\n"
-;;
 
-test "ciao";;
-test "ciaoaic";;
-test "ciaooaic";;
-test "pizza";;
+let main unit =
+  test "ciao";
+  test "ciaoaic";
+  test "ciaooaic";
+  test "pizza"
+
+let () = main ()
