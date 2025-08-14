@@ -1,12 +1,11 @@
 
 let ft_is_palindrome (s: string) : bool =
-  let res = ref true in
-  let len = String.length s - 1 in
-  for i = 0 to len / 2 do
-    res := !res && (String.get s i = String.get s (len - i))
-  done;
-  !res
-
+  let rec loop = fun i len -> (
+    if i >= len / 2 then true else (
+      (String.get s i = String.get s (len - 1 - i)) && loop (i + 1) len
+    )
+  ) in
+  loop 0 (String.length s)
 
 (* TEST SUITE *)
 

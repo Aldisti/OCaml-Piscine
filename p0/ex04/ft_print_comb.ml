@@ -1,14 +1,25 @@
 
 let ft_print_comb unit : unit =
-  for x = 0 to 7 do (
-    for y = (x + 1) to 8 do (
-      for z = (y + 1) to 9 do (
-        print_int x; print_int y; print_int z;
-        if x <> 7 then print_string ", " else ()
-      ) done
-    ) done
-  ) done;
-  print_string "\n"
+  let print = fun x y z -> (
+    print_int x; print_int y; print_int z;
+    if x <> 7 then print_string ", " else ()
+  ) in
+  let rec inner = fun x y z -> (
+    if z > 9 then () else (
+      print x y z; inner x y (z + 1)
+    )
+  ) in
+  let rec middle = fun x y -> (
+    if y > 8 then () else (
+      inner x y (y + 1); middle x (y + 1)
+    )
+  ) in
+  let rec outer = fun x -> (
+    if x > 7 then () else (
+      middle x (x + 1); outer (x + 1)
+    )
+  ) in
+  outer 0; print_string "\n"
 
 (* TEST SUITE *)
 

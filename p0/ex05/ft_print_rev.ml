@@ -1,9 +1,12 @@
 
 let ft_print_rev (s: string) : unit =
-  for i = ((String.length s) - 1) downto 0 do
-    print_char (String.get s i)
-  done;
-  print_char '\n'
+  let rec loop = fun i j -> (
+    if i < j then () else (
+      print_char (String.get s i);
+      loop (i - 1) j
+    )
+  ) in
+  loop (String.length s - 1) 0; print_char '\n'
 
 (* TEST SUITE *)
 
