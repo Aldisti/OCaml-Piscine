@@ -16,6 +16,7 @@
 **/.*.swp
 **/attachments
 p6/ex00/people
+p6/ex01/doctor
 
 # Files containing detailed information about the compilation (generated
 # by `ocamlc`/`ocamlopt` when invoked using the option `-bin-annot`).
