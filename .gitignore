@@ -8,11 +8,14 @@
 *.cmxs
 *.cmxa
 *.out
+*.byt
+*.opt
 
 # Custom
 **/.vscode
 **/.*.swp
 **/attachments
+p6/ex00/people
 
 # Files containing detailed information about the compilation (generated
 # by `ocamlc`/`ocamlopt` when invoked using the option `-bin-annot`).
