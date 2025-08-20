@@ -19,6 +19,7 @@ p6/ex00/people
 p6/ex01/doctor
 p6/ex02/dalek
 p6/ex03/army
+p7/ex00/atom
 
 # Files containing detailed information about the compilation (generated
 # by `ocamlc`/`ocamlopt` when invoked using the option `-bin-annot`).
