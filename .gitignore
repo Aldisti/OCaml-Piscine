@@ -23,6 +23,7 @@ p7/ex00/atom
 p7/ex01/molecules
 p7/ex02/alkanes
 p7/ex03/reactions
+p7/ex04/reactions
 
 # Files containing detailed information about the compilation (generated
 # by `ocamlc`/`ocamlopt` when invoked using the option `-bin-annot`).
