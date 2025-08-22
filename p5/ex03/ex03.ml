@@ -112,12 +112,13 @@ let () =
   test_min_max Fixed8.max "max" ~n2:z;
 
   let x = Fixed8.(x |> pred |> pred |> pred |> pred |> pred) in
+  let y = Fixed8.of_float 21.5 in
   Fixed8.(Printf.printf "x: %s - y: %s\n" (to_string x) (to_string y));
 
   print_endline "Operations:";
-  test_oper Fixed8.add "+" ~n1:x;
-  test_oper Fixed8.sub "-" ~n1:x;
-  test_oper Fixed8.mul "*" ~n1:x;
-  test_oper Fixed8.div "/" ~n1:x;
+  test_oper Fixed8.add "+" ~n1:x ~n2:y;
+  test_oper Fixed8.sub "-" ~n1:x ~n2:y;
+  test_oper Fixed8.mul "*" ~n1:x ~n2:y;
+  test_oper Fixed8.div "/" ~n1:x ~n2:y;
 
   Printf.printf "(int)x => %d\n" (Fixed8.to_int x)
