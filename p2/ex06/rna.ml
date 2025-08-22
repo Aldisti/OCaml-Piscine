@@ -93,6 +93,7 @@ let rec generate_rna (lst: helix) : rna =
 (* TEST SUITE *)
 
 let () =
+  Random.self_init ();
   let rec print_rna = function
     | [] -> ()
     | e :: t -> print_string (base_to_string e); print_rna t
@@ -103,7 +104,7 @@ let () =
     print_endline (helix_to_string dna);
     print_rna rna; print_newline ()
   in
-  test 7;
+  test 10;
   test 4;
   test 3;
-  test (-1)
+  test (-42)
