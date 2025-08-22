@@ -4,10 +4,17 @@ module StringHashtbl = Hashtbl.Make(
     type t = string
     let equal = String.equal
     let hash s : int = (* Used CRC variant: https://www.cs.hmc.edu/~geoff/classes/hmc.cs070.200101/homework10/hashfuncs.html *)
-      String.fold_left (fun init c -> (
-        let ho = init land 0xf8000000 in
-        let init = init lsl 5 in
-        let init = init lxor (ho lsr 27) in
+      let fold_left f init s =
+        let len: int = String.length s in
+        let rec loop i acc =
+          if i >= len then acc
+          else loop (i + 1) (f acc (String.get s i))
+        in
+        loop 0 init
+      in
+      fold_left (fun init c -> (
+        let ho: int = init land 0xf8000000 in
+        let init: int = (init lsl 5) lxor (ho lsr 27) in
         init lxor (int_of_char c)
       )) 0 s
   end
