@@ -11,7 +11,7 @@ let set (r: 'a ft_ref) (v: 'a) : unit =
   r.contents <- v
 
 let bind (r: 'a ft_ref) (f: 'a -> 'b ft_ref) : 'b ft_ref =
-  r.contents |> f
+  f r.contents
 
 
 let () =
