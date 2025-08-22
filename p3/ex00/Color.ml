@@ -1,7 +1,7 @@
-type color = Spade | Heart | Diamond | Club
+type t = Spade | Heart | Diamond | Club
 
 (** The list of all values of type t *)
-let all = [Spade; Heart; Diamond; Club]
+let all: t list = [Spade; Heart; Diamond; Club]
 
 (** "S", "H", "D" or "C" *)
 let toString = function
