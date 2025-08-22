@@ -1,5 +1,6 @@
 
 let () =
+  Random.self_init ();
   let deck = Deck.newDeck () in
   let other_deck = Deck.newDeck () in
 
