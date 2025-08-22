@@ -1,5 +1,6 @@
 
 (* run with `ocaml -I +unix unix.cma micronap.ml <int>` *)
+(* compile with `ocamlopt -I +unix unix.cmxa micronap.ml` *)
 
 let my_sleep () = Unix.sleep 1
 
@@ -8,19 +9,14 @@ let second = function
   | _ -> raise (Failure "List must contain at least 2 elements!")
 
 let wait n : unit =
-  for i = 0 to n do
+  for i = 0 to n - 1 do
     my_sleep ()
   done
 
-let main argc argv =
-  if argc != 2 then print_endline "Error: Invalid number of arguments!"
-  else
-    try
-      second argv |> int_of_string |> wait
-    with
-    | Failure msg -> print_string "Error: "; print_endline msg
+let main = function
+  | [|_; e|] -> e |> int_of_string |> wait
+  | _ -> print_endline "Error: Invalid number of arguments!"
 
 let () =
-  let argv = Array.to_list Sys.argv in
-  main (List.length argv) argv
+  main Sys.argv
 
