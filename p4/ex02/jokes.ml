@@ -9,7 +9,7 @@ let jokes = [|
   "What do you call a deer with no eyes? No eyed deer."
 |]
 
-let get_random arr =
+let get_random arr : string =
   arr.(Array.length arr |> Random.int)
 
 let () =
