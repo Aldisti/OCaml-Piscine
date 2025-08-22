@@ -15,7 +15,7 @@ let test n e : unit =
 
 let main unit =
   test 2 3;
-  test 1 0;
+  test 5 0;
   test 3 4;
   test 0 5;
   test (-2) 3
