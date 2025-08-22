@@ -1,10 +1,10 @@
 
 let crossover l1 l2 =
-  let rec is_in lst e : bool =
+  let rec contains e lst : bool =
     match lst with
     | [] -> false
     | x :: _ when x = e -> true
-    | _ :: tail -> is_in tail e
+    | _ :: tail -> contains e tail
   in
   let rec filter f lst =
     match lst with
@@ -13,7 +13,7 @@ let crossover l1 l2 =
     | _ :: tail -> filter f tail
   in
   if l1 = [] || l2 = [] then []
-  else filter (fun x -> is_in l2 x) l1
+  else filter (fun x -> contains x l2) l1
 
 (* TEST SUITE *)
 
@@ -39,4 +39,5 @@ let () =
   test [1; 2; 3] [];
   test [1; 2; 3] [4; 5];
   test [1] [2; 3; 1];
-  test [] []
+  test [] [];
+  test [1; 2; 3; 4; 5] [1; 7; 2; 8; 5];
