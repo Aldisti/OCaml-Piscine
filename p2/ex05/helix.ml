@@ -42,7 +42,6 @@ let rec generate_helix n: helix =
 
 
 let rec helix_to_string (lst: helix) =
-  let get_base (n: nucleotide) = n.base in
   let base_to_string = function
     | A -> "A"
     | T -> "T"
@@ -52,7 +51,7 @@ let rec helix_to_string (lst: helix) =
   in
   match lst with
   | [] -> ""
-  | e :: t -> (get_base e |> base_to_string) ^ helix_to_string t
+  | e :: t -> base_to_string e.base ^ helix_to_string t
 
 let rec complementary_helix (lst: helix): helix =
   let complementary_base = function
@@ -72,6 +71,7 @@ let rec complementary_helix (lst: helix): helix =
 (* TEST SUITE *)
 
 let () =
+  Random.self_init ();
   let get_base = function
     | A -> "A"
     | T -> "T"
@@ -96,4 +96,5 @@ let () =
   test 5;
   test 4;
   test 3;
-  test (-1)
+  test 0;
+  test (-42)
