@@ -4,9 +4,10 @@ Random.self_init ()
 let rec random_str ?(acc="") (size: int) : string = 
   if size = 0 then acc
   else (
-    let c = char_of_int ((Random.int 26) + (
+    let c: char = char_of_int ((Random.int 26) + (
       if acc = "" then 65 else 97)
-    ) in random_str ~acc:(acc ^ (Char.escaped c)) (size - 1)
+    ) in
+    random_str ~acc:(acc ^ (Char.escaped c)) (size - 1)
   )
 
 let messages = [|
@@ -17,24 +18,23 @@ let messages = [|
 |]
 
 
-class dalek =
-  object
+class dalek = object
 
-  val _name : string = "Dalek" ^ random_str 3
-  val mutable _hp : int = 100
-  val mutable _shield : bool = true
+  val name : string = "Dalek" ^ random_str 3
+  val mutable hp : int = 100
+  val mutable shield : bool = true
 
   method to_string : string =
-    Printf.sprintf "{name: %s, hp: %d, shield: %s}" _name _hp (string_of_bool _shield)
+    Printf.sprintf "Dalek(name: %s, hp: %d, shield: %s)" name hp (string_of_bool shield)
 
   method talk : unit =
     messages.(Array.length messages |> Random.int) |> print_endline
 
   method exterminate (p: People.people) : unit =
-    p#die; _shield <- not _shield
+    p#die; shield <- not shield
 
   method die : unit =
-    _hp <- 0;
+    hp <- 0;
     print_endline "Emergency Temporal Shift!"
 
 end
