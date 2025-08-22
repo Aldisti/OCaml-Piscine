@@ -1,10 +1,11 @@
 
 let ft_string_all (p: char -> bool) (s: string) : bool =
-  let i = ref 0 in
-    while !i < String.length s && p (String.get s !i) do (
-      i := (!i + 1)
-    ) done;
-  !i = String.length s
+  let len = String.length s in
+  let rec loop i acc =
+    if (not acc || i >= len) then acc
+    else loop (i + 1) (p (String.get s i) && acc)
+  in
+  loop 0 true
 
 (* TEST SUITE *)
 
@@ -12,8 +13,8 @@ let test (p: char -> bool) s : unit =
   if ft_string_all p s then
     print_endline "true" else print_endline "false"
 
-let is_digit = fun c -> c >= '0' && c <= '9'
-let is_lower = fun c -> (c >= 'a' && c <= 'z')
+let is_digit c = c >= '0' && c <= '9'
+let is_lower c = (c >= 'a' && c <= 'z')
 
 let main unit =
   test is_digit "1234";
