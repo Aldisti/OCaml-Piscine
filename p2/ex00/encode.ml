@@ -1,28 +1,20 @@
 
-let encode lst  =
-  let first (a, _) = a in
-  let second (_, b) = b in
+let encode (lst: 'a list) : (int * 'a) list =
   let rec reverse ?(acc=[]) l =
     match l with
     | [] -> acc
-    | e :: t -> reverse t ~acc:(e :: acc)
+    | e :: t -> reverse ~acc:(e :: acc) t
   in
-  let rec count c curr tail =
-    match tail with
-    | [] -> (c, tail)
-    | x :: t ->
-      if x <> curr then (c, tail)
-      else count (c + 1) curr t
+  let rec test acc (n, curr) lst =
+    match lst with
+    | [] -> (n, curr) :: acc
+    | e :: t ->
+      if e = curr then test acc (n + 1, curr) t
+      else test ((n, curr) :: acc) (1, e) t
   in
-  let rec counter acc l =
-    match l with
-    | [] -> acc
-    | x :: t ->
-      let pair = count 1 x t in
-      counter (((first pair), x) :: acc) (second pair)
-  in
-  if lst = [] then []
-  else reverse (counter [] lst)
+  match lst with
+  | [] -> []
+  | e :: t -> test [] (1, e) t |> reverse
 
 (* TEST SUITE *)
 
@@ -55,5 +47,5 @@ let () =
     ['a'; 'a'; 'a'; 'b'; 'b'; 'c'];
     [];
     ['x'];
-    ['h'; 'h'; 'i'; 'i'; 'i'; 'i']
+    ['h'; 'h'; 'i'; 'i'; 'i'; 'i'; 'z']
   ]
