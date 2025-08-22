@@ -11,15 +11,14 @@ type nucleotide = {
   base: nucleobase
 }
 
-let generate_nucleotide b =
+let generate_nucleotide (b: char) : nucleotide =
   let to_base = function
     | 'a' | 'A' -> A
     | 't' | 'T' -> T
     | 'c' | 'C' -> C
     | 'g' | 'G' -> G
     | _ -> None
-  in
-  {pho="phosphate"; deo="deoxyribose"; base=(to_base b)}
+  in {pho="phosphate"; deo="deoxyribose"; base=(to_base b)}
 
 (* TEST SUITE *)
 
@@ -31,8 +30,8 @@ let () =
     | G -> "G"
     | None -> "None"
   in
-  let print_nucleotide nucleo =
-    Printf.printf "{pho: %s, deo: %s, base: %s}\n" nucleo.pho nucleo.deo (get_base nucleo.base)
+  let print_nucleotide x =
+    Printf.printf "{pho: %s, deo: %s, base: %s}\n" x.pho x.deo (get_base x.base)
   in
   let test c =
     print_char c; print_string " -> ";
