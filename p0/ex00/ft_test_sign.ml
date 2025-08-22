@@ -5,9 +5,7 @@ let ft_test_sign (n: int) : unit =
 
 (* TEST SUITE *)
 
-let main unit = 
+let () =
   ft_test_sign 42;
   ft_test_sign 0;
   ft_test_sign (-42)
-
-let () = main ()
