@@ -7,15 +7,17 @@ let rec repeat_x (n: int) : string =
 (* TEST SUITE *)
 
 let () = (
-  let test = fun n -> (
+  let test n =
     let s = repeat_x n in
     print_int n;
     print_string (" => |" ^ s ^ "| len: ");
     print_int (String.length s);
     print_char '\n'
-  ) in
-  test 5;
+  in
+  test (-42);
   test 0;
-  test (-1);
+  test 1;
+  test 2;
+  test 5;
   test 10
 )
