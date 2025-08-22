@@ -1,16 +1,16 @@
 
 class ['a] army = object
 
-  val mutable _members = ([] : 'a list)
+  val mutable members = ([] : 'a list)
 
   method add (member: 'a) : unit =
-    _members <- member :: _members
+    members <- member :: members
 
   method delete : unit =
-    match _members with
+    match members with
     | [] -> ()
-    | _ -> _members <- List.tl _members
+    | _ -> members <- List.tl members
 
-  method get_members : 'a list = _members
+  method get_members : 'a list = members
 
 end
