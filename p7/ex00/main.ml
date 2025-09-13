@@ -22,3 +22,7 @@ let () =
   test_equal h c;
   test_equal c h;
   test_equal h h;
+
+  print_newline ();
+
+  Printf.printf "name: %s symbol: %s number: %d\n" h#name h#symbol h#atomic_number
