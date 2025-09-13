@@ -13,7 +13,6 @@ let () =
 
   print_endline "\nTest: travel_in_time";
   d#travel_in_time 2025 1950;
-  d#travel_in_time 2025 2035;
   Printf.printf "d = %s\n" d#to_string;
 
   print_endline "\nTest: take_damage";

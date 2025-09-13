@@ -35,12 +35,7 @@ class doctor name age sidecick =
   method talk : unit = print_endline "Hi! I'm the Doctor!"
 
   method travel_in_time (start: int) (arrival: int) : unit =
-    let new_age = age + (arrival - start) in
-    if new_age <= 0 then
-      print_endline "Cannot use the tardis!"
-    else (
-      age <- new_age; print_endline tardis
-    )
+    print_endline tardis
 
   method use_sonic_screwdriver =
     print_endline "Whiiiiwhiiiwhiii Whiiiiwhiiiwhiii Whiiiiwhiiiwhiii";
