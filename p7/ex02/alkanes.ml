@@ -14,3 +14,15 @@ class alkane (n: int) = object
     @ list (fun () -> new hydrogen) (2 * n + 2)
   )
 end
+
+class methane = object
+  inherit alkane 1
+end
+
+class ethane = object
+  inherit alkane 2
+end
+
+class octane = object
+  inherit alkane 8
+end
