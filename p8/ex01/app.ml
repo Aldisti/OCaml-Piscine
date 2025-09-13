@@ -1,5 +1,13 @@
 
-module App = struct
+module type App = sig
+  type project = string * string * int
+  val zero : project
+  val combine : project -> project -> project
+  val fail : project -> project
+  val success : project -> project
+end
+
+module App : App = struct
   type project = string * string * int
   let zero : project = ("", "", 0)
   let combine (a, _, a_grade) (b, _, b_grade) =
