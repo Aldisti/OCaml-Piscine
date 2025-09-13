@@ -2,7 +2,14 @@
 module StringHashtbl = Hashtbl.Make(
   struct
     type t = string
-    let equal = String.equal
+    let equal a b =
+      let rec loop acc i =
+        if i >= (String.length a) then acc
+        else loop (acc && (String.get a i) = (String.get b i)) (i + 1)
+      in
+      if String.length a <> String.length b then false
+      else loop true 0
+
     let hash s : int = (* Used CRC variant: https://www.cs.hmc.edu/~geoff/classes/hmc.cs070.200101/homework10/hashfuncs.html *)
       let fold_left f init s =
         let len: int = String.length s in
